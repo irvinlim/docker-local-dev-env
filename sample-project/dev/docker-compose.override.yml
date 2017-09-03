@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  php-nginx:
+    environment:
+      VIRTUAL_HOST: my-project.local
+    networks:
+      - default
+      - nginx-proxy
+  mysql:
+    networks:
+      - default
+      - phpmyadmin
+
+networks:
+  nginx-proxy:
+    external:
+      name: nginx-proxy
+  phpmyadmin:
+    external:
+      name: phpmyadmin
