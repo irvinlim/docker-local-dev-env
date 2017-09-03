@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  php-nginx:
+    image: richarvey/nginx-php-fpm
+    environment:
+      WEBROOT: /var/www/html/public/
+    volumes:
+      - ../:/var/www/html
+      - ./conf/nginx:/var/www/html/conf/nginx
+  mysql:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: homestead
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: password
+  redis:
+    image: redis
